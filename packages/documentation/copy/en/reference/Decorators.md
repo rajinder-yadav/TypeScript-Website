@@ -58,15 +58,19 @@ A _Decorator Factory_ is simply a function that returns the expression that will
 We can write a decorator factory in the following fashion:
 
 ```ts
-function color(value: string) {
+function color(value: string) { // Factory function
   // this is the decorator factory, it sets up
   // the returned decorator function
-  return function (target) {
+  return function (target) { // Decorator function
     // this is the decorator
     // do something with 'target' and 'value'...
   };
 }
 ```
+
+The _Decorator Factory_ is a Closure, it makes the arguments passed to the factory function available to the decorator function inside. Later, the inner decorator function has access to the bound (scoped) parameters of its outter function. Learn more about [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) here.
+
+We make use of the _Decorator Factory_ pattery to pass addition arguments, because the decorator function has a fixed signature.
 
 ## Decorator Composition
 
